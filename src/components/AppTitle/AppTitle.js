@@ -12,8 +12,7 @@ export default  class AppTitle extends Component{
   render(){
     return (
       <header>
-          <h1>Esto es un Componente en React</h1>
-          {this.props.children}
+          <h1 onClick={this.props.clickme} >{this.props.title}</h1>
       </header>
     );
   }
