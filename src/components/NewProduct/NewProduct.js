@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class NewProduct extends Component {
   constructor() {
@@ -34,13 +35,30 @@ export default class NewProduct extends Component {
       this.setState({...this.state, ...errorKeys});
     }else{
       //lamar a guardar en api
-      this.setState({
-        "codbarra": '',
-        "nombre": '',
-        "precio": 0,
-        "stock": 0,
-        "imagen": '',
-        "precioError": ''});
+      let postData = {
+        "codigo": this.state.codbarra,
+        "descripcion": this.state.nombre,
+        "precio": parseFloat(this.state.precio),
+        "iva": 0.16,
+        "stock": parseInt(this.state.stock)
+      };
+      axios.post('/api/productos/new', postData)
+        .then( (resp) => {
+          alert('Producto Guardado Satisfactoriamente');
+          this.setState({
+            "codbarra": '',
+            "nombre": '',
+            "precio": 0,
+            "stock": 0,
+            "imagen": '',
+            "precioError": ''
+          });
+        })
+        .catch(
+          (err)=>{
+            alert('Error al guardar el Productos');
+          }
+        );
     }
   }
   render() {
