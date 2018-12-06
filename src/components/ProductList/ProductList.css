@@ -1,0 +1,72 @@
+  .pager {
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .pager button {
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    width: 45%;
+    margin: 0px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+  }
+  .pager span {
+    box-sizing: border-box;
+    padding: 0.5em 0.2em;
+    margin: 0px;
+    background-color: #333;
+    color: #fff;
+    width:10%;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .prdList {
+    list-style: none;
+    padding: 0px;
+    margin: 0.5em 0px;
+    margin-bottom: 3em;
+  }
+  .prdList li {
+    margin: 0px;
+    margin-bottom: 0.25em;
+    padding: 1em 1em;
+    position: relative;
+    border-top: solid 1px #ddd;
+    box-shadow: 0px 1px 3px #333;
+  }
+  .prdList li h3 {
+    font-size: 0.9em;
+    max-width: calc(100% - 4.2em)
+  }
+  .prdList li b {
+    position: absolute;
+    top: 0.02em;
+    right: 0em;
+    font-size: 0.7em;
+    background-color: #fff;
+    color: #333;
+    font-weight: 400;
+    padding: 1em;
+    min-width: 4em;
+    text-align: center;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0px 2px 3px #333;
+  }
+  .prdList li .prdview {
+    position: absolute;
+    bottom: 0.2em;
+    right: 1em;
+    width: 1.5em;
+  }
+  .prdList li .prdview img {
+    max-width: 1.5em;
+  }

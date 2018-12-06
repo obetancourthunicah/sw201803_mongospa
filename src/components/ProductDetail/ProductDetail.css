@@ -1,0 +1,41 @@
+.prddetail {
+  box-sizing: border-box;
+  margin: 1em;
+  position: relative;
+  padding: 1em;
+  border: 1px solid #AAA;
+  min-height: 40vh;
+  box-shadow: 1px 1px 3px #333;
+}
+.prddetail h1 {
+  box-sizing: border-box;
+  position: absolute;
+  transform: rotate(90deg);
+  transform-origin: 50% 269%;
+  right: 0em;
+  margin: 0px;
+  top: 0em;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  background-color: #DDD;
+  width: calc(40vh - 3px);
+}
+.prddetail p {
+  font-weight: bold;
+  font-size: 1.5em;
+  max-width: 82%;
+  margin-top: 0px;
+}
+.prddetail .prdprc {
+  display: block;
+  width: 80%;
+  text-align: right;
+}
+.prddetail .prdprc span {
+  font-size: 1.3em;
+}
+.prddetail .prdstk {
+  display: block;
+  width: 80%;
+  text-align: right;
+}

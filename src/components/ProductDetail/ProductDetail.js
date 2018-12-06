@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+
+import './ProductDetail.css';
+
 export default class ProductDetail extends Component {
   constructor() {
     super();
@@ -28,13 +31,13 @@ export default class ProductDetail extends Component {
     if(this.state.redirectTo){
       return (<Redirect to={this.state.redirectTo} />);
     }
-    let { codigo, descripcion, precio, stock} = this.state.prd;
+    let { codigo, descripcion, precio, stock } = this.state.prd;
     return (
-      <div>
+      <div className="prddetail">
         <h1>{codigo}</h1>
         <p>{descripcion}</p>
-        <b>{precio}</b><br/>
-        <b>{stock}</b>
+        <b className="prdprc">L.<span>{(precio || 0).toFixed(2)}</span></b>
+        <b className="prdstk">{stock} unds</b>
       </div>
     )
   }
