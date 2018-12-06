@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as  Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as  Router, Route, Redirect , Switch} from 'react-router-dom';
 import axios from 'axios';
 
 import AppTitle from './components/AppTitle/AppTitle';
@@ -8,6 +8,8 @@ import ProductList from './components/ProductList/ProductList';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import NewProduct from './components/NewProduct/NewProduct';
 import Login from './components/Login/Login';
+
+import Cmp404 from './components/Cmp404/Cmp404';
 
 import './App.css';
 
@@ -74,15 +76,24 @@ class App extends Component {
         <div>
             <AppTitle title="Gestión de Productos"  />
              <AppMenu isAuthenticated={this.state.isAuthenticated} logout={this.setLogout}></AppMenu>
-              <PPRoute path="/"  exact
-                  isAuthenticated={this.state.isAuthenticated}
-                  component={ProductList} />
-              <PPRoute path="/product/:id" component={ProductDetail}
-                  isAuthenticated={this.state.isAuthenticated} />
-              <PPRoute path="/new"
-                    component={NewProduct}
-                    isAuthenticated={this.state.isAuthenticated} />
-              <PRoute path="/login" component={Login} setLoggedIn={this.setLoggedIn} />
+             <Switch>
+                <PPRoute path="/"  exact
+                    isAuthenticated={this.state.isAuthenticated}
+                    component={ProductList}
+                    logout={this.setLogout}
+                     />
+                <PPRoute path="/product/:id" component={ProductDetail}
+                    isAuthenticated={this.state.isAuthenticated}
+                    logout={this.setLogout} />
+                <PPRoute path="/new"
+                      component={NewProduct}
+                      isAuthenticated={this.state.isAuthenticated}
+                      logout={this.setLogout}/>
+                <PRoute path="/login" component={Login}
+                      setLoggedIn={this.setLoggedIn}
+                      logout={this.setLogout} />
+                <Route component={Cmp404} />
+              </Switch>
         </div>
       </Router>
     );

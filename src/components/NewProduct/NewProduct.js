@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export default class NewProduct extends Component {
@@ -11,7 +12,8 @@ export default class NewProduct extends Component {
       "stock": 0,
       "imagen": '',
       "precioError":'',
-      "nombreError": ''
+      "nombreError": '',
+      "redirect":''
     }
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
@@ -56,12 +58,16 @@ export default class NewProduct extends Component {
         })
         .catch(
           (err)=>{
+            this.setState({redirect:'/login'});
             alert('Error al guardar el Productos');
           }
         );
     }
   }
   render() {
+    if (this.state.redirect !== ''){
+      return (<Redirect to="/login" />);
+    }
     return (
       <section>
       <p>Estamos en New Product</p>

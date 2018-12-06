@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const ListItem = (props) => {
@@ -7,7 +7,7 @@ const ListItem = (props) => {
     <li>
     <h3>{props.descripcion}</h3>
     <b>{props.codigo}</b>
-      <Link to={`/producto/${props._id}`}>Ver</Link>
+      <Link to={`/product/${props._id}`}>Ver</Link>
     </li>
   )
 }
@@ -16,7 +16,8 @@ export default class ProductList extends Component {
   constructor(){
     super();
     this.state = {
-      prods: []
+      prods: [],
+      redirect:''
     }
     this.componentDidMount = this.componentDidMount.bind(this);
   } // constructor
@@ -29,12 +30,16 @@ export default class ProductList extends Component {
         }
       )
       .catch(
-          function(error){
-            console.log(error);
+          (error)=>{
+            this.props.logout();
+            this.setState({prods:[], redirect:'/login'});
           }
       ); // axios
   }
   render(){
+    if(this.state.redirect!==''){
+      return ( <Redirect to="/login" />);
+    }
     let productItems = this.state.prods.map(
       (o, i) => {
           return (<ListItem  {...o} key={o._id} />);
